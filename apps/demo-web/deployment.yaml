@@ -16,6 +16,8 @@ spec:
     metadata:
       labels:
         app: demo-web
+      annotations:
+        training.example.com/change-id: "module4-lab3"
     spec:
       containers:
         - name: nginx
