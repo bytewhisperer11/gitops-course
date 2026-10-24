@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-web
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/bytewhisperer11/gitops-course.git
+    targetRevision: main
+    path: apps/demo-web
+    directory:
+      exclude: namespace.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitops-lab
+
+  # No automated sync policy:
+  # synchronization is manual.
