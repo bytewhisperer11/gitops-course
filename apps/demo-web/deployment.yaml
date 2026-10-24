@@ -5,6 +5,8 @@ metadata:
   namespace: gitops-lab
   labels:
     app: demo-web
+  annotations:
+    training.example.com/phase: "argocd-onboarding"
 spec:
   replicas: 2
   selector:
