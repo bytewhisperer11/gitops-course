@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: gitops-training
+  namespace: argocd
+spec:
+  description: Restricted GitOps training environment
+
+  sourceRepos:
+    - https://github.com/bytewhisperer11/gitops-course.git
+
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: gitops-lab
+
+  clusterResourceWhitelist: []
+
+  namespaceResourceWhitelist:
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: ReplicaSet
+    - group: ""
+      kind: Pod
+    - group: ""
+      kind: Service
